@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elitedesignstudios-web
+  labels:
+    app: elitedesignstudios-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elitedesignstudios-web
+  template:
+    metadata:
+      labels:
+        app: elitedesignstudios-web
+    spec:
+      containers:
+        - name: elitedesignstudios-web
+          image: voxtrondocker/elitedesignstudios:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
