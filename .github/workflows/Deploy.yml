@@ -51,12 +51,11 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
             ssh-private-key: ${{secrets.SSH_PRIVATE_KEY_Master}}
-  
-
+      
       - name: Apply Kubernetes Configurations
         run: |
-            ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.public_IP_Master}} << "
-             cd /home/ubuntu/k8s
-             kubectl apply -f app-deployment.yml
-             kubectl apply -f svc-app.yml
-            "    
+             ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.public_IP_Master }} << EOF
+              cd /home/ubuntu/k8s
+              kubectl apply -f app-deployment.yml
+              kubectl apply -f svc-app.yml
+             EOF
