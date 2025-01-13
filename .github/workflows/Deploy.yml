@@ -63,5 +63,6 @@ jobs:
               cd /home/ubuntu/k8s
               kubectl apply -f app-deployment.yml
               kubectl apply -f svc-app.yml
+              kubectl rollout restart deployment/elitedesignstudios-web -n elitedesignstudios
               echo "Deployment completed"
              EOF
