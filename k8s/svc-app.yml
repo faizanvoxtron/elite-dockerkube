@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: elitedesignstudios-web
+  namespace: elitedesignstudios
 spec:
   selector:
     app: elitedesignstudios-web
