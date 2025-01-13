@@ -54,8 +54,14 @@ jobs:
       
       - name: Apply Kubernetes Configurations
         run: |
-             ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.public_IP_Master }} << EOF
+             ssh -t -o StrictHostKeyChecking=no ubuntu@${{ secrets.public_IP_Master }} << EOF
+              echo "Checking current directory"
+              pwd
+              echo "Listing files in /home/ubuntu/k8s"
+              ls -l /home/ubuntu/k8s
+              echo "Attempting to apply Kubernetes configurations"
               cd /home/ubuntu/k8s
               kubectl apply -f app-deployment.yml
               kubectl apply -f svc-app.yml
+              echo "Deployment completed"
              EOF
