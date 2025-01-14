@@ -16,12 +16,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{secrets.SSH_PRIVATE_KEY_worker}}
-
-      - name: making git safe repository
-        run: |
-         ssh -o StrictHostKeyChecking=no ubuntu@${{secrets.public_IP_worker}} << EOF
-         git config --global --add safe.directory /home/ubuntu/elitedesignstudios 
-         EOF
         #  yhn pr directory aae gi 
 
       - name: Pull updated Code From Github
