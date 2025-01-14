@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setting SSH Connection with machine  
         uses: webfactory/ssh-agent@v0.9.0
