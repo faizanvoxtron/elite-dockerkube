@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: elitedesignstudios-web
-  namespace: elitedesignstudios
   labels:
     app: elitedesignstudios-web
+  namespace: eds
 spec:
   replicas: 1
   selector:
@@ -21,3 +21,17 @@ spec:
           ports:
             - containerPort: 80
           imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "100m"   # 0.1 core
+              memory: "256Mi"  # 256MB
+            limits:
+              cpu: "500m"   # 0.5 core
+              memory: "1Gi"  # 1GB
+          volumeMounts:
+            - name: elitedesignstudios-volume
+              mountPath: /var/www/html
+      volumes:
+        - name: elitedesignstudios-volume
+          persistentVolumeClaim:
+            claimName: eds-pvc

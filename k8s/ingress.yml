@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elitedesignstudios-web-ingress
+  namespace: eds
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: elitedesignstudios.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: elitedesignstudios-web
+                port:
+                  number: 8081
+~                                                                                                                                                                                                    ~                                    
